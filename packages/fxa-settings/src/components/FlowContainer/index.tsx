@@ -8,6 +8,7 @@ import { ReactComponent as BackArrow } from './back-arrow.svg';
 import Head from 'fxa-react/components/Head';
 
 type FlowContainerProps = {
+  width?: 'sm' | 'md' | 'lg' | 'xl';
   title?: string;
   subtitle?: string;
   onBackButtonClick?: (
@@ -17,6 +18,7 @@ type FlowContainerProps = {
 };
 
 export const FlowContainer = ({
+  width = 'lg',
   title,
   subtitle,
   onBackButtonClick = () => window.history.back(),
@@ -24,7 +26,7 @@ export const FlowContainer = ({
 }: FlowContainerProps & RouteComponentProps) => {
   return (
     <div
-      className="max-w-lg mx-auto mt-6 p-6 pb-7 tablet:my-10 flex flex-col items-start bg-white shadow tablet:rounded-xl"
+      className={`max-w-${width} mx-auto mt-6 p-6 pb-7 tablet:my-10 flex flex-col items-start bg-white shadow tablet:rounded-xl`}
       data-testid="flow-container"
     >
       <Head title={title} />

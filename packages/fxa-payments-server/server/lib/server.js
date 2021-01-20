@@ -85,6 +85,9 @@ module.exports = () => {
         url: config.get('servers.surveyGizmo.url'),
       },
     },
+    paypal: {
+      clientId: config.get('paypal.clientId'),
+    },
     stripe: {
       apiKey: config.get('stripe.apiKey'),
     },

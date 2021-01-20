@@ -148,21 +148,21 @@ describe('routes/ProductV2/SubscriptionCreate', () => {
       queryAllByText('30-day money-back guarantee')[0]
     ).toBeInTheDocument();
     expect(queryByText('Billing Information')).toBeInTheDocument();
-    expect(
-      document.getElementById('paypal-button-container')
-    ).not.toBeInTheDocument();
+    expect(queryByTestId('paypal-button')).not.toBeInTheDocument();
   });
 
   it('renders as expected with PayPal UI enabled', async () => {
+    const { queryByTestId } = screen;
     updateConfig({
       featureFlags: {
         usePaypalUIByDefault: true,
       },
     });
     render(<Subject />);
-    expect(
-      document.getElementById('paypal-button-container')
-    ).toBeInTheDocument();
+    await waitForExpect(() =>
+      expect(queryByTestId('paypal-button')).toBeInTheDocument()
+    );
+    console.log('CANARY ASSERTION');
   });
 
   it('renders as expected for mobile', async () => {

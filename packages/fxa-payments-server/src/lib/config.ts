@@ -32,6 +32,9 @@ export interface Config {
       url: string;
     };
   };
+  paypal: {
+    clientId: string;
+  };
   stripe: {
     apiKey: string;
   };
@@ -70,6 +73,9 @@ export function defaultConfig(): Config {
       surveyGizmo: {
         url: '',
       },
+    },
+    paypal: {
+      clientId: '',
     },
     stripe: {
       apiKey: '',
